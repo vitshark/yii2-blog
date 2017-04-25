@@ -1,3 +1,5 @@
+# yii2-blog
+Проект для блога с админкой
 Yii 2 Advanced Project Template
 ===============================
 
