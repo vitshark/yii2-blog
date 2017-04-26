@@ -1,5 +1,6 @@
 <?php
 return [
+    'name'=>'yii2-blog',
     'language'=>'ru-RU',
     'sourceLanguage'=>'ru-RU',
     'defaultRoute'=>'site/index',  
