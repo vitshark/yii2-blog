@@ -12,7 +12,6 @@ is a separate Yii application.
 The template is designed to work in a team development environment. It supports
 deploying the application in different environments.
 
-Documentation is at [docs/guide/README.md](docs/guide/README.md).
 
 [![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-app-advanced/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
 [![Total Downloads](https://poser.pugx.org/yiisoft/yii2-app-advanced/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
@@ -42,6 +41,7 @@ backend
     tests/               contains tests for backend application    
     views/               contains view files for the Web application
     web/                 contains the entry script and Web resources
+    theme/              Шаблон для админки
 frontend
     assets/              contains application assets such as JavaScript and CSS
     config/              contains frontend configurations
