@@ -11,8 +11,9 @@ class AppAsset extends AssetBundle
 {
     //public $basePath = '@webroot';
     //public $baseUrl = '@web';
-    public $sourcePath='@bower/backend/';
-    public $css = [
+    public $sourcePath='@backend/theme/adminlte/backend/';
+    
+public $css = [
         'bootstrap/css/bootstrap.min.css',
         'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css',
         'https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css',

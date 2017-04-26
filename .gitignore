@@ -16,8 +16,7 @@ nbproject
 
 # windows thumbnail cache
 Thumbs.db
-# Не игнорировать эту папку
-/vendor/bower/backend/*
+
 
 # composer vendor dir
 /vendor
