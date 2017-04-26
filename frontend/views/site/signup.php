@@ -1,35 +1,51 @@
 <?php
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+use budyaga\users\models\User;
+use budyaga\cropper\Widget;
+use yii\helpers\Url;
+use yii\captcha\Captcha;
+//use app\models\Signup;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \frontend\models\SignupForm */
+/* @var $model \budyaga\users\models\SignupForm */
 
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
-
-$this->title = 'Signup';
+$this->title = Yii::t('users', 'SIGNUP');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-signup">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to signup:</p>
-
+    <?php $form = ActiveForm::begin(['id' => 'form-profile']); ?>
     <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
-
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-                <?= $form->field($model, 'email') ?>
-
-                <?= $form->field($model, 'password')->passwordInput() ?>
-
-                <div class="form-group">
-                    <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+        <div class="col-xs-12 col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <?= $form->field($model, 'photo')->widget(Widget::className(), [
+                        'uploadUrl' => Url::toRoute('/user/user/uploadPhoto'),
+                    ]) ?>
                 </div>
-
-            <?php ActiveForm::end(); ?>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div><?= $form->field($model, 'username') ?></div>
+            <div><?= $form->field($model, 'email')->input('email') ?></div>
+            <div><?= $form->field($model, 'sex')->dropDownList(User::getSexArray())?></div>
+            <div><?= $form->field($model, 'password')->passwordInput() ?></div>
+            <div><?= $form->field($model, 'password_repeat')->passwordInput() ?></div>
+            <div>
+                 <?= $form->field($model, 'verifyCode')->widget(Captcha::className(),
+    [
+        'template' => '<div class="row"><div class="col-xs-3">{image}</div><div class="col-xs-4">{input}</div></div>',        
+    ]
+)->hint('Нажмите на картинку, чтобы обновить!') ?>
+            </div>
         </div>
     </div>
+
+    <div class="form-group">
+        <?= Html::submitButton(Yii::t('users', 'SIGNUP'), ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+    </div>
+    <?php ActiveForm::end(); ?>
 </div>
