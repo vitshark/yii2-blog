@@ -183,4 +183,55 @@ use budyaga\users\components\AuthorizationWidget;
 =================================================================
 Более подробно можете глянуть на самом сайте. http://krivochenko.ru/blog/post/using-yii2-users
 
+==================================================================
+reCaptcha 
+composer require --prefer-dist "himiklab/yii2-recaptcha-widget" "*"
+Для установки новой капчи
+https://www.cloudways.com/blog/how-to-add-google-recaptcha-in-yii2/
+
+Настроить конфиг в папке common
+main.php в раздел components добавить
+'reCaptcha' => [
+            'name' => 'reCaptcha',
+            'class' => 'himiklab\yii2\recaptcha\ReCaptcha',
+            'siteKey' => '6Lf5kB8UAAAAAHibPWneYpgL85A_ppFhtrYB-lDG',
+            'secret' => '6Lf5kB8UAAAAAFMXr1t_PVwYn933rdT-rv8W1z7p',
+        ],
+
+В форму обратной связи ContactForm.php
+вместо старой капчи добавить новую.
+<?= $form->field($model, 'reCaptcha')->widget(\himiklab\yii2\recaptcha\ReCaptcha::className()) ?>
+
+в форме модели ContactForm.php
+добавить в rules(),
+
+public function rules()
+{
+return [
+// name, email, subject and body are required
+[['name', 'email', 'subject', 'body','reCaptcha'], 'required'],
+// email has to be a valid email address
+['email', 'email'],
+// verifyCode needs to be entered correctly
+['reCaptcha', \himiklab\yii2\recaptcha\ReCaptchaValidator::className(), 'secret' => '6LeTXQgUAAAAALExcpzgCxWdnWjJcPDoMfK3oKGi']
+
+];
+}
+
+и также прописать в attributeLabels()
+public function attributeLabels()
+
+   {
+
+       return [
+
+           'reCaptcha' => '',
+
+       ];
+
+   }
+================================================================================
+После установки капчи я еще обновил код по предидущему расширению
+http://krivochenko.ru/blog/post/using-yii2-users
+
 

@@ -4,7 +4,7 @@ use yii\bootstrap\ActiveForm;
 use budyaga\users\models\User;
 use budyaga\cropper\Widget;
 use yii\helpers\Url;
-use yii\captcha\Captcha;
+//use yii\captcha\Captcha;
 //use app\models\Signup;
 
 /* @var $this yii\web\View */
@@ -35,11 +35,13 @@ $this->params['breadcrumbs'][] = $this->title;
             <div><?= $form->field($model, 'password')->passwordInput() ?></div>
             <div><?= $form->field($model, 'password_repeat')->passwordInput() ?></div>
             <div>
-                 <?= $form->field($model, 'verifyCode')->widget(Captcha::className(),
+                 <!--$form->field($model, 'verifyCode')->widget(Captcha::className(),
     [
         'template' => '<div class="row"><div class="col-xs-3">{image}</div><div class="col-xs-4">{input}</div></div>',        
     ]
 )->hint('Нажмите на картинку, чтобы обновить!') ?>
+                 -->
+                 <?= $form->field($model, 'reCaptcha')->widget(\himiklab\yii2\recaptcha\ReCaptcha::className()) ?>
             </div>
         </div>
     </div>

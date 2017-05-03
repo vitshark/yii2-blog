@@ -118,3 +118,14 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.btn.btn-square-200px{
+    width: 200px !important;
+    height: 200px !important;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.fa-10x {
+    font-size: 10em;
+}

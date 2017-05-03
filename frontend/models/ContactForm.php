@@ -14,7 +14,8 @@ class ContactForm extends Model
     public $email;
     public $subject;
     public $body;
-    public $verifyCode;
+    //public $verifyCode;
+    public $reCaptcha;
 
 
     /**
@@ -24,11 +25,13 @@ class ContactForm extends Model
     {
         return [
             // name, email, subject and body are required
-            [['name', 'email', 'subject', 'body'], 'required'],
+            [['name', 'email', 'subject', 'body', 'reCaptcha'], 'required'],
             // email has to be a valid email address
             ['email', 'email'],
             // verifyCode needs to be entered correctly
-            ['verifyCode', 'captcha'],
+            //['verifyCode', 'captcha'],
+            // verifyCode needs to be entered correctly
+            ['reCaptcha', \himiklab\yii2\recaptcha\ReCaptchaValidator::className(), 'secret' => '6Lf5kB8UAAAAAFMXr1t_PVwYn933rdT-rv8W1z7p'],
         ];
     }
 
@@ -38,7 +41,8 @@ class ContactForm extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            //'verifyCode' => 'Verification Code',
+            'reCaptcha' => 'reCaptcha Нужно отметить',
         ];
     }
 

@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use backend\assets\AppAsset;
+use frontend\assets\AppAssetSite;
 use yii\helpers\Html;
 //use yii\bootstrap\Nav;
 //use yii\bootstrap\NavBar;
@@ -12,6 +13,7 @@ use yii\helpers\Html;
 
 
 AppAsset::register($this);
+backend\assets\AppAssetSite::register($this);
 $asset= backend\assets\AppAsset::register($this);
 $baseUrl=$asset->baseUrl;
 ?>

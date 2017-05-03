@@ -1,4 +1,8 @@
+<?php 
+use yii\helpers\Url;
+use yii\bootstrap\Nav;
 
+?>
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -23,15 +27,92 @@
               </span>
         </div>
       </form>
+      
+      <?php
+        echo Nav::widget(
+            [
+                'id' => 'adminlte-sidebar-menu',
+                'encodeLabels' => false,
+                'options' => ['class'=>'sidebar-menu'],
+                'activateItems' => true,
+                'activateParents' => true,
+                'items' => [
+                    [
+                        'label' => 'Настройка сайта',
+                        'url' => ['/settings/index'],
+                        //'visible' => Yii::$app->user->can('administrator*'),
+                        'icon' => 'fa-gears',
+                    ],
+                    [
+                        'label' => 'Категории статей',
+                        'url' => ['/categories/index'],
+                        //'visible' => Yii::$app->user->can('administrator'),
+                        'icon' => 'fa-folder',
+                    ],
+                    [
+                        'label' => 'Список статей',
+                        'url' => ['/posts/index'],
+                        //'visible' => Yii::$app->user->can('administrator'),
+                        'icon' => 'fa-file-text',
+                    ],
+                    
+                    [
+                        'label' => 'Назначения',
+                        'url' => ['/rbac'],
+                        'icon' => 'fa-legal',
+                        //'visible' => Yii::$app->user->can('/rbac/*'),
+                        'active' => $moduleId === 'rbac',
+                        'items' => [
+                            [
+                                'label' => 'Назначения',
+                                'url' => ['/rbac/assignment/index'],
+                                'active' => $controllerPath === '/rbac/assignment'
+                            ],
+                            [
+                                'label' => 'Разрешения',
+                                'url' => ['/rbac/permission/index'],
+                                'active' => $controllerPath === '/rbac/permission'
+                            ],
+                            [
+                                'label' => 'Роли',
+                                'url' => ['/rbac/role/index'],
+                                'active' => $controllerPath === '/rbac/role'
+                            ],
+                            [
+                                'label' => 'Маршруты',
+                                'url' => ['/rbac/route/index'],
+                                'active' => $controllerPath === '/rbac/route'
+                            ],
+                            [
+                                'label' => 'Правила',
+                                'url' => ['/rbac/rule/index'],
+                                'active' => $controllerPath === '/rbac/rule'
+                            ]
+                        ]
+                    ],
+                ],
+            ]
+        );
+        ?>
+      
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
+      <!--
       <ul class="sidebar-menu">
-        <li class="header">MAIN NAVIGATION</li>
+        <li class="header">Меню навигации</li>
+        <li>
+          <a href="<?php echo Url::toRoute('/settings/index'); ?>">
+            <i class="fa fa-gears"></i> <span>Настройки сайта</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">new</small>
+            </span>
+          </a>
+        </li>
         <li class="active treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <i class="fa fa-gs"></i> <span>4545</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
+              <i class="fa fa-gs pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
@@ -196,6 +277,7 @@
         <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
       </ul>
+      -->
     </section>
     <!-- /.sidebar -->
   </aside>

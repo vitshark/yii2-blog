@@ -26,6 +26,7 @@ public $css = [
         'plugins/daterangepicker/daterangepicker.css',
         'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css',
         
+        
     ];
     public $js = [
         'plugins/jQuery/jquery-2.2.3.min.js',
